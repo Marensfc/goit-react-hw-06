@@ -47,8 +47,6 @@ function App() {
     return contact.name.toLowerCase().includes(filterValue.toLowerCase());
   });
 
-  console.log(filteredContacts);
-
   return (
     <div className={css.appContainer}>
       <h1>Phonebook</h1>
