@@ -30,14 +30,12 @@ const contactSchema = yup.object().shape({
 const ContactForm = () => {
   const fieldNameId = useId();
   const fieldNumberId = useId();
-
   const dispatch = useDispatch();
 
   const handleSubmit = (values, action) => {
     const newContact = { ...values, id: uuidv4() };
-    // addContact(newContact);
-
     dispatch(addContact(newContact));
+
     action.resetForm();
   };
 

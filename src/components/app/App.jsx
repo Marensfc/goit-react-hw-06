@@ -23,36 +23,16 @@ function App() {
     return savedContacts;
   });
 
-  const [filterValue, setFilterValue] = useState("");
-
   useEffect(() => {
     window.localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
 
-  const addContact = newContact => {
-    const newContacts = [...contacts, newContact];
-
-    setContacts(newContacts);
-  };
-
-  const deleteContact = contactId => {
-    const updatedContacts = contacts.filter(contact => {
-      return contact.id !== contactId;
-    });
-
-    setContacts(updatedContacts);
-  };
-
-  const filteredContacts = contacts.filter(contact => {
-    return contact.name.toLowerCase().includes(filterValue.toLowerCase());
-  });
-
   return (
     <div className={css.appContainer}>
       <h1>Phonebook</h1>
-      <ContactForm addContact={addContact} />
-      <SearchBox filterValue={filterValue} setFilterValue={setFilterValue} />
-      <ContactList contacts={filteredContacts} deleteContact={deleteContact} />
+      <ContactForm />
+      <SearchBox />
+      <ContactList />
     </div>
   );
 }

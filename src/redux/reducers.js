@@ -10,22 +10,31 @@ const contactsInitialState = [
 export const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
     case "contacts/addContact":
-      console.log(action);
       return [...state, action.payload];
+    case "contacts/deleteContact":
+      return state.filter(contact => contact.id !== action.payload);
     default:
       return state;
   }
 };
 
-const filterValueInitialState = { value: "" };
+const filtersInitialState = { name: "" };
 
-export const filterValueReducer = (state = filterValueInitialState, action) => {
-  return state;
+export const filtersReducer = (state = filtersInitialState, action) => {
+  switch (action.type) {
+    case "filters/setFilterName":
+      return {
+        ...state,
+        name: action.payload,
+      };
+    default:
+      return state;
+  }
 };
 
 // Root reducer
 
 export const rootReducer = combineReducers({
   contacts: contactsReducer,
-  filterValue: filterValueReducer,
+  filters: filtersReducer,
 });
