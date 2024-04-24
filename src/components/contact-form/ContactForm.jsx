@@ -6,7 +6,7 @@ import { useId } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/actions";
+import { addContact } from "../../redux/contactsSlice";
 
 const initialValues = {
   name: "",
